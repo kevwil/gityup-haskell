@@ -22,8 +22,10 @@ main = do
       putStrLn "not a directory"
 
 fullPaths :: FilePath -> [FilePath] -> [FilePath]
-fullPaths basepath paths =
-  map (\x -> (basepath ++ "/" ++ x)) paths
+-- fullPaths basepath paths =
+  -- map (\x -> (basepath ++ "/" ++ x)) paths
+fullPaths basepath =
+  map (\x -> basepath ++ "/" ++ x)
 
 hasMeta :: FilePath -> IO Bool
 hasMeta (someDir ) =
