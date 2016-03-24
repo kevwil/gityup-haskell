@@ -6,7 +6,7 @@ import System.Environment (getArgs)
 import System.Directory-- (doesDirectoryExist,getDirectoryContents)
 import Control.Monad (filterM)
 import System.Exit
-import System.Cmd (rawSystem)
+import System.Process (createProcess,proc)
 
 main :: IO ()
 main = do
@@ -35,6 +35,5 @@ runUpdate :: FilePath -> IO Bool
 runUpdate targetDir = do
   setCurrentDirectory targetDir
   putStrLn ("#### updating " ++ targetDir ++ " ####")
-  rawSystem "git" ["smart-pull"]
+  createProcess (proc "git" ["smart-pull"])
   return True
-
